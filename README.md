@@ -1,4 +1,4 @@
-# Flutter Notes App with Firebase
+# Notie
 
 A complete Flutter notes application with Firebase Authentication and Cloud Firestore integration using Provider for state management. Built as Individual Assignment 2 for ALU Flutter Mobile Development course.
 
@@ -49,25 +49,3 @@ This app demonstrates advanced Provider usage with **zero setState() calls** in 
    ```bash
    flutter run
    ```
-
-## 🔧 CRUD Operations Implementation
-
-### Real-time Stream-based Architecture
-The app uses Firestore streams for real-time updates:
-
-```dart
-// Real-time notes streaming
-Stream<List<Note>> getNotesStream(String userId) {
-  return _firestore
-      .collection('notes')
-      .where('userId', isEqualTo: userId)
-      .orderBy('createdAt', descending: true)
-      .snapshots()
-      .map((snapshot) => snapshot.docs.map((doc) => 
-          Note.fromMap(doc.data(), doc.id)).toList());
-}
-```
-
-## 📄 License
-
-Educational project - ALU Individual Assignment 2
